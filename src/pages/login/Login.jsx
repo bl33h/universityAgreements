@@ -80,9 +80,8 @@ function Login() {
 
         <div style={{ display: 'inline-flex', alignItems: 'center' }}>
           <p>Mostrar contraseña</p>
-          <input type="checkbox" id="mostrar-contrasena" onChange={handleCheckboxChange} />
+          <input type="checkbox" id="showPassword" onChange={handleCheckboxChange} />
         </div>
-        
         <button className="login-button" onClick={check_login}>INICIAR SESION</button>
         </div>
       </div>
