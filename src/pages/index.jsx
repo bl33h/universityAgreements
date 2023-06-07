@@ -1,15 +1,13 @@
-import React from 'react'
-import Login from './login'
-import { Switch, Route } from 'react-router-dom'
+import React from 'react';
+import Login from './login';
+import { Routes, Route } from 'react-router-dom';
+
 const Page = () => {
+  return (
+    <Routes>
+      <Route path="/" element={<Login />} />
+    </Routes>
+  );
+};
 
-    return (
-        <Switch>
-            <Route path="/Login">
-                <Login />
-            </Route>
-        </Switch>
-    )
-}
-
-export default Page
+export default Page;

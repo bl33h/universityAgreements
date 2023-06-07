@@ -3,7 +3,7 @@ import '/src/components/texts.css'
 import '/src/components/display.css'
 import { useState, useEffect } from 'react'
 import { supabase } from '../../client'
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
   const [mostrarContrasena, setMostrarContrasena] = useState(false);
@@ -11,7 +11,7 @@ function Login() {
   const [user, setUser] = useState({ username: '', password: '', logged_in: false, role:'' })
   let { username, password, role } = ''
   let succesfull_login = false
-  const history = useHistory()
+  const history = useNavigate()
 
   useEffect(() => {
     console.log('writing', user)
