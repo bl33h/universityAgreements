@@ -6,10 +6,10 @@ import { supabase } from '../../client'
 import { useNavigate } from 'react-router-dom';
 
 function Login() {
-  const [mostrarContrasena, setMostrarContrasena] = useState(false);
+  const [showPassword, setshowPassword] = useState(false);
   const [users, setUsers] = useState([])
-  const [user, setUser] = useState({ username: '', password: '', logged_in: false, role:'' })
-  let { username, password, role } = ''
+  const [user, setUser] = useState({ username: '', password: '', logged_in: false })
+  let { username, password} = ''
   let succesfull_login = false
   const history = useNavigate()
 
@@ -50,8 +50,7 @@ function Login() {
       while ((while_counter < users.length) && (succesfull_login == false)) {
         if ((username == users[while_counter].username) && (password == users[while_counter].password)) {
           succesfull_login = true
-          role = users[while_counter].role
-          setUser({ username: username, password: password, logged_in: true, role: role })
+          setUser({ username: username, password: password, logged_in: true })
         } else {
           while_counter++
         }
@@ -62,7 +61,7 @@ function Login() {
 
 
   function handleCheckboxChange() {
-    setMostrarContrasena(!mostrarContrasena);
+    setshowPassword(!showPassword);
   }
   return (
     <div className="root" >
@@ -71,7 +70,7 @@ function Login() {
         <input id="input-username"  className="input-login" onClick={fetchPosts} onKeyDown={handleKeyDown}></input>
           
         <h1>Password:</h1>
-        <input type={mostrarContrasena ? 'text' : 'password'}  id="input-password" className="input-login" onClick={fetchPosts} onKeyDown={handleKeyDown}></input>
+        <input type={showPassword ? 'text' : 'password'}  id="input-password" className="input-login" onClick={fetchPosts} onKeyDown={handleKeyDown}></input>
 
         <div style={{ display: 'inline-flex', alignItems: 'center' }}>
           <p>Mostrar contraseña</p>
