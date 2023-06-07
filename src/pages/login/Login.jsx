@@ -4,6 +4,7 @@ import '/src/components/display.css'
 import { useState, useEffect } from 'react'
 import { supabase } from '../../client'
 import { useNavigate } from 'react-router-dom';
+import loginIcon from '../../assets/icon.png'
 
 function Login() {
   const [showPassword, setshowPassword] = useState(false);
@@ -11,7 +12,7 @@ function Login() {
   const [user, setUser] = useState({ username: '', password: '', logged_in: false })
   let { username, password} = ''
   let succesfull_login = false
-  const history = useNavigate()
+  const history = useNavigate ()
 
   useEffect(() => {
     console.log('writing', user)
@@ -36,6 +37,10 @@ function Login() {
     } 
   }
 
+  const sign_in = () => {
+    history.push('/SignIn')
+  }
+
   async function fetchPosts() {
     const { data } = await supabase.from('users').select()
     setUsers(data)
@@ -50,7 +55,7 @@ function Login() {
       while ((while_counter < users.length) && (succesfull_login == false)) {
         if ((username == users[while_counter].username) && (password == users[while_counter].password)) {
           succesfull_login = true
-          setUser({ username: username, password: password, logged_in: true })
+          setUser({ username: username, password: password, logged_in: true})
         } else {
           while_counter++
         }
@@ -66,6 +71,7 @@ function Login() {
   return (
     <div className="root" >
       <div className="container">
+       <img className="login-icon" src={loginIcon} alt="loginIcon" /> 
         <h1>Username:</h1>
         <input id="input-username"  className="input-login" onClick={fetchPosts} onKeyDown={handleKeyDown}></input>
           
